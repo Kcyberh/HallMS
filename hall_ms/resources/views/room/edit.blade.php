@@ -1,5 +1,10 @@
 <x-adminlayout>
 <div class="">
+@if ($errors->has('type'))
+    <div class="alert alert-danger">
+        {{ $errors->first('type') }}
+    </div>
+@endif
     <h3>Add Room</h3>
     <p></p>
   </div>

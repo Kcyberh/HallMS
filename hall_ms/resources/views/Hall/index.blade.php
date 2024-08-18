@@ -55,7 +55,7 @@
                     <td>{{ $hall->capacity }}</td>
                     <td>
                         <a href="{{ route('hall.edit', $hall) }}" class="btn btn-primary btn-sm">Edit</a>
-                        <a href="#" class="btn btn-primary btn-sm">Show</a>
+                        <a href="{{route('hall.show', $hall)}}" class="btn btn-primary btn-sm">Show</a>
                         <form action="{{ route('hall.destroy', $hall)}}" method="POST" class="d-inline">
                             @csrf 
                             @method('DELETE')

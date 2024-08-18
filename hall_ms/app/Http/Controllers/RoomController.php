@@ -150,6 +150,51 @@ class RoomController extends Controller
     if ($currentRoomCount >= $hall->capacity) {
         return redirect()->back()->withErrors(['hall_id' => 'Hall capacity exceeded']);
     }
+    if ($data['type'] == 4) {
+        // Get the count of rooms in the same hall, block, and with the same room number
+        $roomNumberCount = Room::where('hall_id', $data['hall_id'])
+            //->where('gender', $data['gender']) // Assuming you have a block field
+            ->where('number', $data['number']) // Assuming you have a room_number field
+            ->count();
+    
+        if ($roomNumberCount >= 4) {
+            return redirect()->back()->withErrors(['type' => 'Room Number type 4 in 1 this hall and block is full']);
+        }
+    }
+    if ($data['type'] == 3) {
+        // Get the count of rooms in the same hall, block, and with the same room number
+        $roomNumberCount = Room::where('hall_id', $data['hall_id'])
+            //->where('gender', $data['gender']) // Assuming you have a block field
+            ->where('number', $data['number']) // Assuming you have a room_number field
+            ->count();
+    
+        if ($roomNumberCount >= 3) {
+            return redirect()->back()->withErrors(['type' => 'Room Number type 3 in 1 in this hall and block is full']);
+        }
+    }
+    if ($data['type'] == 2) {
+        // Get the count of rooms in the same hall, block, and with the same room number
+        $roomNumberCount = Room::where('hall_id', $data['hall_id'])
+            //->where('gender', $data['gender']) // Assuming you have a block field
+            ->where('number', $data['number']) // Assuming you have a room_number field
+            ->count();
+    
+        if ($roomNumberCount >= 2) {
+            return redirect()->back()->withErrors(['type' => 'Room Number type 2 in 1 in this hall and block is full']);
+        }
+    }
+    if ($data['type'] == 1) {
+        // Get the count of rooms in the same hall, block, and with the same room number
+        $roomNumberCount = Room::where('hall_id', $data['hall_id'])
+            //->where('gender', $data['gender']) // Assuming you have a block field
+            ->where('number', $data['number']) // Assuming you have a room_number field
+            ->count();
+    
+        if ($roomNumberCount >= 1) {
+            return redirect()->back()->withErrors(['type' => 'Room Number type 1 in 1 in this hall and block is full']);
+        }
+    }
+    
         $room->update($data);
         $hall = Hall::all(); 
         return to_route('room.index', $room)->with('message','Room details has been update');

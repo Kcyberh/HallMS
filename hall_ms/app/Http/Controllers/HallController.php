@@ -56,7 +56,12 @@ class HallController extends Controller
      */
     public function show(Hall $hall)
     {
-        return view('Hall.show', ['hall' => $hall]);
+        $rooms = $hall->room()->get();
+        $bookedRoomsCount = $rooms->count();
+        return view('Hall.show', ['hall' => $hall,
+        'room' => $rooms,
+        'bookedRoomsCount' => $bookedRoomsCount,
+    ]);
     }
 
     /**
