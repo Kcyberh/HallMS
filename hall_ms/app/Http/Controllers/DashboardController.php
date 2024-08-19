@@ -57,7 +57,9 @@ class DashboardController extends Controller
                 $bookings = Booking::with(['hall','room','user'])
                 ->where('user_id', $user->id)->get();
                 
+                
                 return view('students.index', compact('bookings'));
+                
             default:
                 return view('weclome');
         }

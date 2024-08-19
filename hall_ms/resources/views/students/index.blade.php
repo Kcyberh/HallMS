@@ -58,10 +58,15 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="text-end ">
-            <p><strong>Kindly make paymnet within the next 72 hours to secure your booking</strong></p>
-           <a href="{{ route('payment.index')}}" class="btn btn-primary">Make payment</a>
-        </div>
+        <div class="text-end">
+    @if($booking->status === 'approved')
+        <p><strong>Your payment has been sent successfully. View your booking details below:</strong></p>
+        <a href="{{ route('booking.show', $booking->id) }}" class="btn btn-success">View Booking</a>
+    @else
+        <p><strong>Kindly make payment within the next 72 hours to secure your booking</strong></p>
+        <a href="{{ route('payment.index')}}" class="btn btn-primary">Make Payment</a>
+    @endif
+</div>
         </div>
     @endif
                 </div>
