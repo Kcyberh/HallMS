@@ -41,7 +41,7 @@ Route::middleware(['auth', 'verified'])->group(function (){
 Route::get('/admin/register', [RegisteredUserController::class, 'showRegisterForm'])->name('admin.registerUser');
 Route::get('/admin/upload', [RegisteredUserController::class, 'showUploadform'])->name('admin.upload');
 Route::post('/import', [UserImportController::class, 'import'])->name('users.import');
-//Route::get('/users/template', [UserImportController::class, 'downloadTemplate'])->name('users.template');
+Route::get('/users/template', [UserImportController::class, 'downloadTemplate'])->name('users.template');
 Route::delete('/registerUser/{id}', [RegisteredUserController::class, 'destroy'])->name('registerUser.destroy');
 
 });

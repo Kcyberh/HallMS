@@ -106,6 +106,7 @@
   <a href="{{ route('room.index')}}">Rooms</a>
   <a href="{{ route('booking.managebooking')}}">Bookings</a>
   <a href="{{ route('registerUser.index') }}">Users</a>
+  <a href="{{ route('resident.index')}}">Registered Student</a>
   
   
  

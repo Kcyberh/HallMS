@@ -17,9 +17,18 @@ class ResidentController extends Controller
      */
     public function index()
     {
+        if (Auth::check()&& Auth::user()->usertype == 'staff'){
         $resident = Resident::with(['user','booking.hall','booking.room'])
         ->get();
         return view('resident.index',compact('resident'));
+        } 
+        elseif(Auth::check()&& Auth::user()->usertype == 'admin'){
+            $resident = Resident::with(['user','booking.hall','booking.room'])
+            ->get();
+            return view('admin.residents',compact('resident'));
+            
+        }
+        return redirect('/')->with('error','You do not have access to this page');
     }
 
     /**
@@ -78,8 +87,17 @@ class ResidentController extends Controller
      */
     public function show(Resident $resident)
     {
+        if (Auth::check()&& Auth::user()->usertype == 'staff'){
        // $booking = $resident->bookings()->get();
         return view('resident.show', ['resident' => $resident]);
+    }
+        elseif(Auth::check()&& Auth::user()->usertype == 'admin')
+        {
+            return view('admin.showresident', ['resident' => $resident]);
+            
+        }
+        return redirect('/')->with('error','You do not have access to this page');
+   
     }
 
     /**

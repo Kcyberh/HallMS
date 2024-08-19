@@ -84,48 +84,48 @@ class UserImportController extends Controller
 }
    
 
-public function downloadTemplate()
-{
-    // Create a new Spreadsheet object
-    $spreadsheet = new Spreadsheet();
+// public function downloadTemplate()
+// {
+//     // Create a new Spreadsheet object
+//     $spreadsheet = new Spreadsheet();
 
-    // Set the active sheet
-    $sheet = $spreadsheet->getActiveSheet();
+//     // Set the active sheet
+//     $sheet = $spreadsheet->getActiveSheet();
 
-    // Set the header values
-    $sheet->setCellValue('A1', 'Name');
-    $sheet->setCellValue('B1', 'Email');
-    $sheet->setCellValue('C1', 'Password');
-    $sheet->setCellValue('D1', 'User Type');
-    $sheet->setCellValue('E1', 'Index Number');
-    $sheet->setCellValue('F1', 'Department');
-    $sheet->setCellValue('G1', 'Level');
+//     // Set the header values
+//     $sheet->setCellValue('A1', 'Name');
+//     $sheet->setCellValue('B1', 'Email');
+//     $sheet->setCellValue('C1', 'Password');
+//     $sheet->setCellValue('D1', 'User Type');
+//     $sheet->setCellValue('E1', 'Index Number');
+//     $sheet->setCellValue('F1', 'Department');
+//     $sheet->setCellValue('G1', 'Level');
 
-    // Optionally, you can add some example data or instructions in the first row
-    $sheet->setCellValue('A2', 'John Doe');
-    $sheet->setCellValue('B2', 'johndoe@example.com');
-    $sheet->setCellValue('C2', 'securepassword');
-    $sheet->setCellValue('D2', 'admin, staff, student');
-    $sheet->setCellValue('E2', '123456');
-    $sheet->setCellValue('F2', 'IT Department');
-    $sheet->setCellValue('G2', '100');
+//     // Optionally, you can add some example data or instructions in the first row
+//     $sheet->setCellValue('A2', 'John Doe');
+//     $sheet->setCellValue('B2', 'johndoe@example.com');
+//     $sheet->setCellValue('C2', 'securepassword');
+//     $sheet->setCellValue('D2', 'admin, staff, student');
+//     $sheet->setCellValue('E2', '123456');
+//     $sheet->setCellValue('F2', 'IT Department');
+//     $sheet->setCellValue('G2', '100');
 
-    // Create a writer to generate the file
-    $writer = new Xlsx($spreadsheet);
+//     // Create a writer to generate the file
+//     $writer = new Xlsx($spreadsheet);
 
-    // Stream the file to the browser
-    return response()->stream(
-        function() use ($writer) {
-            $writer->save('php://output');
-        },
-        200,
-        [
-            'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-            'Content-Disposition' => 'attachment; filename="UserTemplate.xlsx"',
-            'Cache-Control' => 'max-age=0',
-        ]
-    );
-}
+//     // Stream the file to the browser
+//     return response()->stream(
+//         function() use ($writer) {
+//             $writer->save('php://output');
+//         },
+//         200,
+//         [
+//             'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+//             'Content-Disposition' => 'attachment; filename="UserTemplate.xlsx"',
+//             'Cache-Control' => 'max-age=0',
+//         ]
+//     );
+// }
 
     public function index()
     {
