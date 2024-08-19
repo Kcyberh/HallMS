@@ -17,7 +17,9 @@ class ResidentController extends Controller
      */
     public function index()
     {
-        return view('resident.index');
+        $resident = Resident::with(['user','booking.hall','booking.room'])
+        ->get();
+        return view('resident.index',compact('resident'));
     }
 
     /**
@@ -76,7 +78,8 @@ class ResidentController extends Controller
      */
     public function show(Resident $resident)
     {
-        //
+       // $booking = $resident->bookings()->get();
+        return view('resident.show', ['resident' => $resident]);
     }
 
     /**
@@ -101,6 +104,10 @@ class ResidentController extends Controller
     public function destroy(Resident $resident)
     {
         //
+        $resident->delete();
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Resident record deleted successfully.');
     }
     Public function search(Request $request){
         $request->validate([

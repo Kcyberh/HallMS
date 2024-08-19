@@ -29,6 +29,6 @@ class Booking extends Model
     }
     public function resident()
     {
-        return $this->belongsTo(Resident::class);
+        return $this->hasMany(Resident::class);
     }
 }
