@@ -1,5 +1,10 @@
 <x-adminlayout>
 <div>
+<div class="mb-3">
+        <a href="{{ route('hall.index')}}" class="btn btn-secondary btn-sm">
+            &larr; Back
+        </a>
+    </div>
   <h1>{{$hall->name}}</h1>
   <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded text-center">
                 <p><strong>{{ $hall->block }}</strong></p>
@@ -13,7 +18,7 @@
 
                 <h2>Rooms</h2>
                 <p>Blue indicator : Available</p>
-                <P>Red Indicatoe: Booked</P>
+                <P>Red Indicator: Booked</P>
     @if ($room->isEmpty())
         <p>No rooms available for this hall.</p>
     @else
