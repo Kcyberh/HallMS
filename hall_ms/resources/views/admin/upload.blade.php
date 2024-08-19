@@ -30,7 +30,7 @@
     <h2 class="mt-5">Upload Excel Sheet</h2>
 
 <!-- Button to download the template -->
-<a href="{{ route('users.template') }}" class="btn btn-secondary mb-3">Download Excel Template</a>
+<!-- <a href="{{ route('users.template') }}" class="btn btn-secondary mb-3">Download Excel Template</a> -->
 
 <a href="/export/userstemp.xlsx" class="btn btn-secondary mb-3">Download Excel Template</a>
 
