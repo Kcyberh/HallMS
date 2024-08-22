@@ -5,6 +5,8 @@ use App\Models\Room;
 use App\Models\Hall;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Key;
+use Illuminate\Support\Facades\DB;
 
 class RoomController extends Controller
 {
@@ -105,6 +107,21 @@ class RoomController extends Controller
     }
 
         $room = Room::create($data);
+         // Retrieve a key (use an appropriate method or criteria here)
+         $key = Key::first(); // Fetch the first key, or use a specific criteria
+
+        if ($key) {
+            // Generate the key_number by combining key_id and room number
+            $keyNumber = $key->key_code . '-' . $room->number;
+
+            // Insert into the key_room table
+            DB::table('key_room')->insert([
+                'room_id' => $room->id,
+                'key_id' => $key->id,
+                'key_number' => $keyNumber,
+                'status' => 'active', // or any other status you want to set
+            ]);
+        }
         return to_route('room.index', $room)->with('message', 'Room has been created');
     }
     return redirect('/')->with('error', 'You do not have access to this page.');
