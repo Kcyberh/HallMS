@@ -1,60 +1,95 @@
 <x-adminlayout>
+
 <div>
-<div class="mb-3">
-        <a href="{{ route('hall.index')}}" class="btn btn-secondary btn-sm">
+    <div class="mb-3">
+        <a href="{{ route('hall.index') }}" class="btn btn-secondary btn-sm">
             &larr; Back
         </a>
     </div>
-  <h1>{{$hall->name}}</h1>
-  <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded text-center">
-                <p><strong>{{ $hall->block }}</strong></p>
-                <p><strong>{{ $hall->location }}</strong></p>
-                <p><strong> Capacity : <p><strong>{{ $hall->capacity }}</strong></p>
-           {{ $bookedRoomsCount }} Rooms / {{ $hall->capacity }} 
-    - {{ $hall->capacity - $bookedRoomsCount }} available
-</strong></p>
-                </div>
-             
+  
+    <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded text-center">
+        <h1>{{ $hall->name }}</h1>
+        <p><strong>{{ $hall->block }}</strong></p>
+        <p><strong>{{ $hall->location }}</strong></p>
+        <p><strong>Capacity: {{ $hall->capacity }}</strong></p>
+        <p><strong>{{ $bookedRoomsCount }} Rooms / {{ $hall->capacity }} - {{ $hall->capacity - $bookedRoomsCount }} available</strong></p>
+    </div>
 
-                <h2>Rooms</h2>
-                <p>Blue indicator : Available</p>
-                <P>Red Indicator: Booked</P>
-    @if ($room->isEmpty())
+    <h2 class="text-center">Rooms</h2>
+    
+    <p><span class="status-indicator" data-status="available"></span> : Available</p>
+    <p><span class="status-indicator" data-status="booked"></span> : Booked</p>
+    
+    @if ($groupedRooms->isEmpty())
         <p>No rooms available for this hall.</p>
     @else
-    <div class="container">
-    <div class="row">
-            @foreach ($room as $room)    
-                <div class="col-md-4 mb-4">
-                <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Room Number: {{$room->number}}</h5>
-                    <h6 class="card-title">Room Price: {{$room->price}}</h6>
-                    <p class="card-text">Room Type: {{ $room->type }} in 1</p>
-                    <p class="card-text">Gender: {{ $room->gender }}</p>
-                    <p class="card-text"><strong>Status: {{$room->status}}</strong>
-                    <span class="status-indicator" data-status="{{$room->status}}"></span>
-                </p>
+        <div class="container">
+            <div class="row">
+                @foreach ($groupedRooms as $key => $group)
+                    <div class="col-md-12 mb-4">
+                        <div class="card colorful-card">
+                            <div class=" d-flex card-body">
+                                <!-- <h4 class="card-title">Room Number: {{ $key[0] }} | Type: {{ $key[1] }}</h4> -->
+                                 
+                                @foreach ($group as $room)
+                                
+                                    <div class=" room-box m-1 ">
+                                    <h5 class="card-title">Room Number: {{ $room->number }}</h5>
+                                    <p class="card-text"><strong>Status: {{ $room->status }}</strong>
+                                        <span class="status-indicator" data-status="{{ $room->status }}"></span></p>
+                                        <h5 class="card-title">Room Price: {{ $room->price }}</h5>
+                                        <p class="card-text">Gender: {{ $room->gender }}</p>
+                                        <p class="card-text">Type: {{ $room->type }}</p>
+                                        
+                                        
+                                    </div>
+                                
+                                @endforeach
+                                
+                            </div>
+                            <a href="#" class="btn btn-primary">View</a>
+                        </div>
+                    </div>
                     
-                    <a href="#" class="btn btn-primary">View</a>
-                </div>
-                </div>
+                @endforeach
             </div>
-            
-            @endforeach
-            </div>
-            </div>
+        </div>
     @endif
+
     <style>
-    .status-indicator {
-        display: inline-block;
-        width: 25px;
-        height: 15px;
-        margin-left: 10px;
-        border-radius: 0%; /* Makes the box circular */
-        vertical-align: middle; 
-    }
-</style>
+        .status-indicator {
+            display: inline-block;
+            width: 25px;
+            height: 15px;
+            margin-left: 10px;
+            border-radius: 0%; /* Makes the box circular */
+            vertical-align: middle; 
+        }
+
+
+.room-box {
+    width: 48%; /* Adjust width to ensure two boxes fit on one line */
+    height: 10rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: scroll;
+    font-size: smaller;
+}
+
+.colorful-card {
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+    </style>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {

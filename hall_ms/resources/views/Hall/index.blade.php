@@ -1,5 +1,9 @@
 <x-adminlayout>
-
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
     
   <div class="">
     <h3>Add Hall</h3>

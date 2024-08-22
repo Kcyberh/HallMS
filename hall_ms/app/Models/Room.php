@@ -17,4 +17,8 @@ class Room extends Model
     public function Booking(){
         return $this->belongsTo(Booking::class);
     }
+    public function keys()
+    {
+        return $this->belongsToMany(Key::class, 'key_room');
+    }
 }

@@ -6,6 +6,7 @@ use App\Models\Hall;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Key;
 
 class HallController extends Controller
 {
@@ -45,7 +46,26 @@ class HallController extends Controller
             'location' => ['required', 'string'],
             'capacity' => ['required', 'integer', 'min:0'],
         ]);
+         // Check if a hall with the same name, block, and location already exists
+         $existingHall = Hall::where('name', $data['name'])
+         ->where('block', $data['block'])
+         ->where('location', $data['location'])
+         ->where('capacity', $data['capacity'])
+         ->first();
+
+        if ($existingHall) {
+        return redirect()->back()->with('error', 'A hall with the same name, block, and location already exists.');
+        }
+
         $hall = Hall::create($data);
+         // Create the key code by combining the first letter of the hall name and the last letter of the block
+         $keyCode = substr($data['name'], 0, 1) . substr($data['block'], -1);
+
+         // Insert the key into the keys table
+         Key::create([
+             'key_code' => $keyCode,
+             //'room_id' => null // Assuming you'll associate it with a room later
+         ]);
         return to_route('hall.index', $hall)->with('message', 'Hall was created');
     }
     return redirect('/')->with('error','You do not have access to this page');
@@ -56,12 +76,17 @@ class HallController extends Controller
      */
     public function show(Hall $hall)
     {
-        $rooms = $hall->room()->get();
-        $bookedRoomsCount = $rooms->count();
-        return view('Hall.show', ['hall' => $hall,
-        'room' => $rooms,
-        'bookedRoomsCount' => $bookedRoomsCount,
-    ]);
+        $rooms = $hall->room()->orderBy('number', 'asc')->get();
+        $bookedRoomsCount = $rooms->where('status', 'booked')->count();
+        $groupedRooms = $rooms->groupBy(function ($room) {
+            return $room->number . '-' . $room->type; // Group by both number and type
+        });
+    
+        return view('Hall.show', [
+            'hall' => $hall,
+            'groupedRooms' => $groupedRooms,
+            'bookedRoomsCount' => $bookedRoomsCount,
+        ]);
     }
 
     /**
