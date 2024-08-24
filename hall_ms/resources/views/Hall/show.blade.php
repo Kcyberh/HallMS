@@ -40,14 +40,27 @@
                                         <h5 class="card-title">Room Price: {{ $room->price }}</h5>
                                         <p class="card-text">Gender: {{ $room->gender }}</p>
                                         <p class="card-text">Type: {{ $room->type }}</p>
-                                        
+                                        <p><strong>Key Details:</strong></p>
+                                        <ul class="list-group">
+                                            @if(isset($keys[$room->id]) && count($keys[$room->id]) > 0)
+                                                @foreach($keys[$room->id] as $key)
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                       <strong> Key Code:</strong> <span class="badge bg-primary">{{ $key->key_code }}</span>
+                                                       <strong> Key Number:</strong> <span class="badge bg-secondary">{{ $key->key_number }}</span>
+                                                    </li>
+                                                @endforeach
+                                            @else
+                                                <li class="list-group-item list-group-item-warning">No key associated</li>
+                                            @endif
+                                        </ul>
+                                        </p>
                                         
                                     </div>
                                 
                                 @endforeach
                                 
                             </div>
-                            <a href="#" class="btn btn-primary">View</a>
+                            <a href="{{route('hall.members', $hall)}}" class="btn btn-primary">View</a>
                         </div>
                     </div>
                     
@@ -68,16 +81,19 @@
 
 
 .room-box {
-    width: 48%; /* Adjust width to ensure two boxes fit on one line */
-    height: 10rem;
+    
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 15px;
     margin-bottom: 10px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: scroll;
+    /* overflow: scroll; */
     font-size: smaller;
+}
+.room-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .colorful-card {

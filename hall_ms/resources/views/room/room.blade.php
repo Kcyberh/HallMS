@@ -94,7 +94,7 @@
           <td>{{ $room->status }}</td>
           <td>
             <a href="{{ route('room.edit', $room) }}" class="btn btn-primary btn-sm">Edit</a>
-            <a href="#" class="btn btn-primary btn-sm">Show</a>
+            <a href="{{route('room.show', $room)}}" class="btn btn-primary btn-sm">Show</a>
             <form action="{{ route('room.destroy', $room)}}" method="POST" style="display:inline;">
               @csrf 
               @method('DELETE')

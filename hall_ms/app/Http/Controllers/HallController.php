@@ -7,6 +7,7 @@ use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Key;
+use Illuminate\Support\Facades\DB;
 
 class HallController extends Controller
 {
@@ -23,6 +24,12 @@ class HallController extends Controller
         return redirect('/')->with('error','You do not have access to this page');
     }
 
+    public function members(Hall $hall)
+    {
+         //Retrieve all rooms associated with the hall
+       
+        
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -78,15 +85,26 @@ class HallController extends Controller
     {
         $rooms = $hall->room()->orderBy('number', 'asc')->get();
         $bookedRoomsCount = $rooms->where('status', 'booked')->count();
+        
+        // Group rooms by both number and type
         $groupedRooms = $rooms->groupBy(function ($room) {
-            return $room->number . '-' . $room->type; // Group by both number and type
+            return $room->number . '-' . $room->type;
         });
+    
+        // Fetch keys associated with each room
+        $keys = DB::table('key_room')
+            ->join('keys', 'key_room.key_id', '=', 'keys.id')
+            ->select('key_room.room_id', 'keys.key_code','key_room.key_number')
+            ->whereIn('key_room.room_id', $rooms->pluck('id'))
+            ->get()
+            ->groupBy('room_id');
     
         return view('Hall.show', [
             'hall' => $hall,
             'groupedRooms' => $groupedRooms,
             'bookedRoomsCount' => $bookedRoomsCount,
-        ]);
+            'keys' => $keys,
+    ]);
     }
 
     /**

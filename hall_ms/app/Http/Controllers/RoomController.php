@@ -130,9 +130,17 @@ class RoomController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
+    public function show(room $room)
+    { 
+        $roomNumber = $room->number;
+        $hallId = $room->hall_id;
+
+        $rooms = Room::where('hall_id', $hallId)
+        ->where('number', $roomNumber)
+        ->get();
+
+// Pass the rooms to the view
+return view('room.members', ['rooms' => $rooms]);
     }
 
     /**

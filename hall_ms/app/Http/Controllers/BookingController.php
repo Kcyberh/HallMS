@@ -121,9 +121,22 @@ class BookingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Booking $booking)
     {
-        
+        // Retrieve the room associated with the booking
+    $room = $booking->room;
+
+    // Retrieve the key associated with the room from the key_room table
+    $key = DB::table('keys')
+        ->join('key_room', 'keys.id', '=', 'key_room.key_id')
+        ->where('key_room.room_id', $room->id)
+        ->select('keys.*')
+        ->first();
+
+    return view('room.show', [
+        'booking' => $booking,
+        'key' => $key
+    ]);
     }
 
     /**

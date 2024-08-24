@@ -82,11 +82,16 @@
            <p> <strong>Room Type:</strong> {{ $payment->booking->room->type }} in 1<br></p>
            <p> <strong>Starting Date:</strong> {{ $payment->booking->started_at }} <br></p>
            <p> <strong>Ending Date:</strong> {{ $payment->booking->ending_at }} <br></p>
-           <p> <strong>Amount:</strong> ${{ $payment->amount }} <br></p>
-            <img src="{{ asset('storage/' . $payment->image) }}" class="img-fluid m-1" alt="payment reciept" >
-            <a href="{{ asset('storage/' . $payment->image) }}" download="Payment_{{ $payment->id. $payment->user->name }}.jpg" class="btn btn-success mt-2">Download Image</a>
+           <p> <strong>Amount:</strong>  &#8373; {{ $payment->amount }} <br></p>
+           @if ($payment->channel === 'bank')
+            <img src="{{ asset('storage/' . $payment->image) }}" class="img-fluid m-1" alt="payment receipt">
+            <a href="{{ asset('storage/' . $payment->image) }}" download="Payment_{{ $payment->id }}_{{ $payment->user->name }}.jpg" class="btn btn-success mt-2">Download Image</a>
             <a href="{{ asset('storage/' . $payment->image) }}" target="_blank" class="btn btn-primary mt-2">View Image</a>
-        </div>
+        @else
+            <!-- Optionally, you can include other content or leave it empty if nothing else is needed -->
+            <p> <strong>Channel:</strong> {{ $payment->channel }} <br></p>
+            <p>No receipt image available for this payment.</p>
+        @endif </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
