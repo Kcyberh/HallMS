@@ -9,5 +9,10 @@ class Complains extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
+    protected $fillable = ['time_date','statement','user_id','resident_id'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ComplainController;
 use App\Http\Controllers\HallController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -68,6 +69,10 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::post('/save-order-and-pay', [PaymentController::class, 'initialize'])->name('payment.initialize');
 });
 
+Route::middleware(['auth','verified'])->group(function(){
+    Route::resource('complain', ComplainController::class);
+
+});
 //Route::get('/room', [RoomController::class, 'index'])->name('admin.index');
 //Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 require __DIR__.'/auth.php';

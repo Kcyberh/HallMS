@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Student</title>
-
+        <link rel="stylesheet" href="//cdn.datatables.net/2.1.3/css/dataTables.dataTables.min.css">
+  
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
@@ -91,7 +92,7 @@
   <h5 class="text-light text-center"><strong>{{ Auth::user()->name }}</strong></h5>
   <a href="{{ route('dashboard')}}">Dashboard</a>
   <a href="{{ route('booking.index') }}">Bookings</a>
-  <a href="">Complain</a>
+  <a href="{{ route('complain.index')}}">Complain</a>
   <a href=""></a>
   
 </div>
@@ -130,4 +131,14 @@ function closeNav() {
   document.getElementById("main").style.marginLeft = "0";
 }
     </script>
+    <script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/2.1.3/js/dataTables.min.js"></script>
+<script>
+    $(document).ready(function (){
+        $('#myTable').DataTable();
+    })
+</script>
 </html>

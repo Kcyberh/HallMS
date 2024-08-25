@@ -107,6 +107,7 @@
   <a href="{{ route('booking.managebooking')}}">Bookings</a>
   <a href="{{ route('registerUser.index') }}">Users</a>
   <a href="{{ route('resident.index')}}">Registered Student</a>
+  <a href="{{ route('complain.create')}}">Complains</a>
   
   
  

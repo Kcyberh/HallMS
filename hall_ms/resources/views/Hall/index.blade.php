@@ -6,7 +6,7 @@
 @endif
     
   <div class="">
-    <h3>Add Hall</h3>
+    <h3 class="text-center font-weight-bold">Add Hall</h3>
     <p></p>
   </div>
   <div class="m-3">
