@@ -9,6 +9,8 @@ use App\Models\Hall;
 use App\Models\Booking;
 use App\Models\Payment;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
 class DashboardController extends Controller
 {
     public function show()
@@ -54,15 +56,40 @@ class DashboardController extends Controller
                 'available','booked'));
                 // return view();
             case 'student':
-                $bookings = Booking::with(['hall','room','user'])
-                ->where('user_id', $user->id)->get();
-                
-                
-                return view('students.index', compact('bookings'));
+                // Fetch the user's own bookings
+                $bookings = Booking::with(['hall', 'room', 'user'])
+                ->where('user_id', $user->id)
+                ->get();
+
+                // Fetch all bookings that have the same room number and hall ID
+                $room = $bookings->first()->room;
+                $roomNumber = $room->number;
+                $hallId = $room->hall_id;
+
+                $relatedBookings = Booking::whereHas('room', function($query) use ($roomNumber, $hallId) {
+                $query->where('hall_id', $hallId)
+                ->where('number', $roomNumber);
+                })->get();
+
+                // Fetch the keys associated with the rooms in the related bookings
+                $keys = DB::table('key_room')
+                ->join('keys', 'key_room.key_id', '=', 'keys.id')
+                ->select('key_room.room_id', 'keys.key_code', 'key_room.key_number')
+                ->whereIn('key_room.room_id', $relatedBookings->pluck('room_id'))
+                ->get()
+                ->groupBy('room_id');
+
+                // Pass both sets of bookings and keys to the view
+                return view('students.index', [
+                'bookings' => $bookings,
+                'relatedBookings' => $relatedBookings,
+                'keys' => $keys,
+                ]);
                 
             default:
                 return view('weclome');
         }
     }
+    
     
 }
