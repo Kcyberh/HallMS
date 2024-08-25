@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Key;
 use Illuminate\Support\Facades\DB;
+use App\Models\Booking;
 
 class RoomController extends Controller
 {
@@ -134,13 +135,24 @@ class RoomController extends Controller
     { 
         $roomNumber = $room->number;
         $hallId = $room->hall_id;
+      
+         // Fetch all bookings that have the same room number and hall ID
+    $bookings = Booking::whereHas('room', function($query) use ($roomNumber, $hallId) {
+        $query->where('hall_id', $hallId)
+              ->where('number', $roomNumber);
+    })->get();
+   // Fetch the keys associated with the rooms in the bookings
+   $keys = DB::table('key_room')
+   ->join('keys', 'key_room.key_id', '=', 'keys.id')
+   ->select('key_room.room_id', 'keys.key_code', 'key_room.key_number')
+   ->whereIn('key_room.room_id', $bookings->pluck('room_id'))
+   ->get()
+   ->groupBy('room_id');
 
-        $rooms = Room::where('hall_id', $hallId)
-        ->where('number', $roomNumber)
-        ->get();
+    // Pass the bookings to the view
+    return view('room.members', ['bookings' => $bookings,'keys' => $keys,]);
 
-// Pass the rooms to the view
-return view('room.members', ['rooms' => $rooms]);
+
     }
 
     /**

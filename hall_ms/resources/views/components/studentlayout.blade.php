@@ -90,7 +90,7 @@
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <h5 class="text-light text-center"><strong>{{ Auth::user()->name }}</strong></h5>
   <a href="{{ route('dashboard')}}">Dashboard</a>
-  <a href="{{ route('booking.index')}}">Bookings</a>
+  <a href="{{ route('booking.index') }}">Bookings</a>
   <a href="">Complain</a>
   <a href=""></a>
   
