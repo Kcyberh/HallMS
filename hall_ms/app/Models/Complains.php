@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Complains extends Model
 {
     use HasFactory;
+
+    protected $fillable = [];
 }

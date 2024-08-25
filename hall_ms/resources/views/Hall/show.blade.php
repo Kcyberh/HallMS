@@ -35,7 +35,7 @@
                                 
                                     <div class=" room-box m-1 ">
                                     <h5 class="card-title">Room Number: {{ $room->number }}</h5>
-                                    <p class="card-text"><strong>Status: {{ $room->status }}</strong>
+                                    <p class="card-text"><strong>Status:</strong>
                                         <span class="status-indicator" data-status="{{ $room->status }}"></span></p>
                                         <h5 class="card-title">Room Price: {{ $room->price }}</h5>
                                         <p class="card-text">Gender: {{ $room->gender }}</p>
@@ -115,9 +115,9 @@
             const status = indicator.getAttribute('data-status').toLowerCase();
 
             if (status === 'available') {
-                indicator.style.backgroundColor = 'blue';
+                indicator.style.backgroundColor = '#28a745';
             } else if (status === 'booked') {
-                indicator.style.backgroundColor = 'red';
+                indicator.style.backgroundColor = '#ffc107';
             }
         });
     });

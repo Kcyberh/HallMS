@@ -34,7 +34,7 @@
 <!--Card -->
     <div class="row mt-3">
   <div class="col-sm-6 mb-3 mb-sm-0" >
-  <div class="card bg-warning">
+  <div class="card">
       <div class="card-body ">
       <img src="icons/account_circle.png" alt="booking" srcset="" width="20%" >
       <span></span>
