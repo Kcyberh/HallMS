@@ -59,10 +59,11 @@
 
 
 <!-- Complaints Section -->
-<h2>Your Complaints</h2>
+
 @if($complaints->isEmpty())
     <p>You have not made any complaints yet.</p>
 @else
+<h2>Your Complaints</h2>
 <div class="table-responsive">
         <table id="myTable" class="table table-bordered table-hover">
             <thead class="table-dark">
@@ -78,7 +79,9 @@
                 <tr>
                 <td>{{ \Carbon\Carbon::parse($complaint->time_date)->format('Y-m-d H:i') }}</td>
                     <td>{{ $complaint->statement }}</td>
-                    <td>{{ $complaint->status }}</td>
+                    <td><span class="badge {{ $complaint->status == 'pending' ? 'bg-warning' : 'bg-success' }}">
+                    {{ ucfirst($complaint->status) }}
+                </span></td>
                     <td>
             <a href="" class="btn btn-primary btn-sm">Edit</a>
             <a href="{{ route('complain.show', $complaint) }}" class="btn btn-primary btn-sm">Show</a>

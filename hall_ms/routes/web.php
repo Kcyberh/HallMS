@@ -8,12 +8,15 @@ use App\Http\Controllers\HallController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KeyController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ResidentController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserImportController;
 use App\Models\Booking;
 use App\Models\Resident;
+use App\Models\Key;
+use App\Models\Room;
 
 Route::get('/', function () {
     return view('welcome');
@@ -71,8 +74,12 @@ Route::middleware(['auth','verified'])->group(function(){
 
 Route::middleware(['auth','verified'])->group(function(){
     Route::resource('complain', ComplainController::class);
+    Route::resource('key', KeyController::class);
+    Route::post('/keys/log', [KeyController::class, 'logAction'])->name('key.log');
 
 });
+Route::get('/api/rooms/{hall_id}', function($hall_id) {
+    return Room::where('hall_id', $hall_id)->get();});
 //Route::get('/room', [RoomController::class, 'index'])->name('admin.index');
 //Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 require __DIR__.'/auth.php';

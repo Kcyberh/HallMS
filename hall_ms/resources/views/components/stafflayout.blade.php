@@ -91,8 +91,8 @@
   <h5 class="text-light text-center"><strong>{{ Auth::user()->name }}</strong></h5>
   <a href="{{ route('dashboard')}}">Dashboard</a>
   <a href="{{ route('resident.index')}}">Register Student</a>
-  <a href="">Complaint</a>
-  <a href="">Key</a>
+  
+  <a href="{{ route('key.index')}}">Key</a>
   
 </div>
 
