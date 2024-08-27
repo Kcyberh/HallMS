@@ -93,8 +93,8 @@ class BookingController extends Controller
                 'telephone' => $validatedData['telephone'],
                 'age' => $validatedData['age']
             ]);
-// Dispatch the job to delete the booking if not approved within 30 seconds
-            DeleteUnapprovedBooking::dispatch($booking)->delay(now()->addSeconds(30));
+// Dispatch the job to delete the booking if not approved within 60 seconds
+            DeleteUnapprovedBooking::dispatch($booking)->delay(now()->addSeconds(60));
 
             // Update the room status
             $room = Room::find($validatedData['room_id']);
@@ -130,8 +130,9 @@ class BookingController extends Controller
     $key = DB::table('keys')
         ->join('key_room', 'keys.id', '=', 'key_room.key_id')
         ->where('key_room.room_id', $room->id)
-        ->select('keys.*')
+        ->select('key_room.room_id', 'keys.key_code', 'key_room.key_number')
         ->first();
+        
 
     return view('room.show', [
         'booking' => $booking,
