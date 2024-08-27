@@ -1,4 +1,25 @@
 <x-app-layout>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if (session('success'))
+        <script>
+            Swal.fire({
+                title: "Good job!",
+                text: "{{ session('success') }}",
+                icon: "success",
+                confirmButtonText: "OK"
+            });
+        </script>
+    @endif
+    @if (session('error'))
+    <script>
+        Swal.fire({
+            title: "Deleted!",
+            text: "{{ session('error') }}",
+            icon: "error",
+            confirmButtonText: "OK"
+        });
+    </script>
+@endif
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}

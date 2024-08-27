@@ -2,7 +2,7 @@
 <div>
     <h2>Complaints</h2>
     @if($complaints->isEmpty())
-        <p>You have not made any complaints yet.</p>
+        <p>No complaints yet.</p>
     @else
     <div class="table-responsive">
         <table id="myTable" class="table table-bordered table-hover">

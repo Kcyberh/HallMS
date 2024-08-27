@@ -1,16 +1,25 @@
 <x-stafflayout>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @if ($errors->has('error'))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>{{ $errors->first('error') }}</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+   <script>
+      Swal.fire({
+            title: "Error!",
+            text: "{{ $errors->first('error') }}",
+            icon: "warning",
+            confirmButtonText: "OK"
+    })
+   </script>
 @endif
 @if (session('success'))
-    <div class="alert alert-success">
-       <strong>{{ session('success') }}</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
+        <script>
+            Swal.fire({
+                title: "Good job!",
+                text: "{{ session('success') }}",
+                icon: "success",
+                confirmButtonText: "OK"
+            });
+        </script>
+    @endif
 <div class="row">
   <div class="col-sm-6 mb-3 mb-sm-0" >
     <div class="card" >

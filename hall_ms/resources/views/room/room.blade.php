@@ -1,9 +1,38 @@
 <x-adminlayout>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @if ($errors->has('type'))
-    <div class="alert alert-danger">
-        {{ $errors->first('type') }}
-    </div>
+   <script>
+      Swal.fire({
+            title: "Error!",
+            text: "{{ $errors->first('type') }}",
+            icon: "warning",
+            confirmButtonText: "OK"
+    })
+   </script>
 @endif
+@if (session('error'))
+    <script>
+        Swal.fire({
+            title: "Deleted!",
+            text: "{{ session('error') }}",
+            icon: "error",
+            confirmButtonText: "OK"
+        });
+    </script>
+@endif
+
+
+@if (session('message'))
+    <script>
+        Swal.fire({
+            title: "Success!",
+            text: "{{ session('message') }}",
+            icon: "success",
+            confirmButtonText: "OK"
+        });
+    </script>
+@endif
+  
 <div class="">
     <h3>Add Room</h3>
     <p></p>

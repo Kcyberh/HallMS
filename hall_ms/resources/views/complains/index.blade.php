@@ -1,17 +1,28 @@
 <x-studentlayout>
-    
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <h1>Make Complain</h1>
  <!-- Check for success message -->
  @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
+        <script>
+            Swal.fire({
+                title: "Good job!",
+                text: "{{ session('success') }}",
+                icon: "success",
+                confirmButtonText: "OK"
+            });
+        </script>
     @endif
     @if (session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
+    <script>
+        Swal.fire({
+            title: "Deleted!",
+            text: "{{ session('error') }}",
+            icon: "error",
+            confirmButtonText: "OK"
+        });
+    </script>
 @endif
+
 
 <div class="">
     <h3></h3>

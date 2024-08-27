@@ -1,4 +1,5 @@
 <x-stafflayout>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
         .image-preview {
             width: 150px;
@@ -15,10 +16,14 @@
     </style>
 <h1>Register</h1>
 @if ($errors->has('error'))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>{{ $errors->first('error') }}</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+   <script>
+      Swal.fire({
+            title: "Error!",
+            text: "{{ $errors->first('error') }}",
+            icon: "warning",
+            confirmButtonText: "OK"
+    })
+   </script>
 @endif
  <!-- index number -->
  <div class="row g-3">

@@ -135,7 +135,29 @@
   display: inline-block;
   transition: background-color 0.6s ease;
 }
+/* Style the header */
+.header {
+  padding: 10px 16px;
+  background: #555;
+  color: #f1f1f1;
+}
 
+/* Page content */
+.content {
+  padding: 16px;
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 102px;
+}
 .active, .dot:hover {
   background-color: #717171;
 }
@@ -157,7 +179,7 @@
            
             <div class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
                 <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
-                    <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
+                    <header class="header grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3" id="myheader">
                         
                         <div class="flex lg:justify-center lg:col-start-2">
                            <h1 class="fs-3"><strong>HALL MANAGEMENT SYSTEM</strong></h1>
@@ -382,5 +404,5 @@ function showSlides() {
   setTimeout(showSlides, 5000); // Change image every 2 seconds
 }
 </script>
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </html>

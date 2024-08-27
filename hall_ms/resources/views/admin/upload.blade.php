@@ -9,12 +9,16 @@
     <div class="alert alert-success mt-3">
         {{ session('success') }}
     </div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    </button>
 @endif
 
 @if (session('error'))
     <div class="alert alert-danger mt-3">
         {{ session('error') }}
     </div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    </button>
 @endif
 
 @if ($errors->any())

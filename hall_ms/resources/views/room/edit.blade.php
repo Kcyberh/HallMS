@@ -1,10 +1,26 @@
 <x-adminlayout>
-<div class="">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @if ($errors->has('type'))
-    <div class="alert alert-danger">
-        {{ $errors->first('type') }}
-    </div>
+   <script>
+      Swal.fire({
+            title: "Error!",
+            text: "{{ $errors->first('type') }}",
+            icon: "warning",
+            confirmButtonText: "OK"
+    })
+   </script>
 @endif
+@if (session('error'))
+    <script>
+        Swal.fire({
+            title: "Deleted!",
+            text: "{{ session('error') }}",
+            icon: "error",
+            confirmButtonText: "OK"
+        });
+    </script>
+@endif
+
     <h3>Add Room</h3>
     <p></p>
   </div>
@@ -12,6 +28,7 @@
     <form action="{{ route('room.update', $room)}}" method="POST" class="room">
       @csrf
       @method('PUT')
+      <div class="div">
 <div class="row ">
   <div class="col">
     <input name="number" type="number" class="form-control" value="{{$room->number}}" aria-label="Number" min="0" required>
@@ -68,5 +85,5 @@
 </div>
 </form>
 </div>
-
+</div>
 </x-adminlayout>

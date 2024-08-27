@@ -12,8 +12,8 @@
     <ul class="list-group">
     @if ($key)
     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <strong>Key Code:</strong> <span class="badge bg-primary">{{ $key->key_code }}</span>
-                                            <strong>Key Number:</strong> <span class="badge bg-secondary">{{ $key->key_number }}</span>
+                   <strong>Key Code:</strong> <span class="badge bg-primary">{{ $key->key_code }}</span>
+                    <strong>Key Number:</strong> <span class="badge bg-secondary">{{ $key->key_number }}</span>
                                         </li>
     @else
     <li class="list-group-item list-group-item-warning">No key associated</li>
@@ -33,6 +33,7 @@
 
 .room-details:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    
 }
 
 .key-detail {

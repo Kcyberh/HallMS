@@ -120,12 +120,7 @@
 
 </div>
 <div id="main">
-  @session('message')
-  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>{{ session('message') }}</strong> 
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-  @endsession
+  
 {{$slot}}
 </div>
    
@@ -158,5 +153,6 @@ function closeNav() {
         $('#myTable').DataTable();
     })
 </script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </html>
 

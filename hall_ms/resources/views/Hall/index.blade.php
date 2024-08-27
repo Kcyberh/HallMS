@@ -1,9 +1,37 @@
 <x-adminlayout>
-@if (session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if (session('errors'))
+    <script>
+        Swal.fire({
+            title: "Deleted!",
+            text: "{{ session('error') }}",
+            icon: "error",
+            confirmButtonText: "OK"
+        });
+    </script>
 @endif
+@if (session('error'))
+    <script>
+        Swal.fire({
+            title: "Error!",
+            text: "{{ session('error') }}",
+            icon: "error",
+            confirmButtonText: "OK"
+        });
+    </script>
+@endif
+
+@if (session('message'))
+    <script>
+        Swal.fire({
+            title: "Success!",
+            text: "{{ session('message') }}",
+            icon: "success",
+            confirmButtonText: "OK"
+        });
+    </script>
+@endif
+    
     
   <div class="">
     <h3 class="text-center font-weight-bold">Add Hall</h3>
@@ -58,7 +86,7 @@
                     <td>{{ $hall->location }}</td>
                     <td>{{ $hall->capacity }}</td>
                     <td>
-                        <a href="{{ route('hall.edit', $hall) }}" class="btn btn-primary btn-sm">Edit</a>
+                        <!-- <a href="{{ route('hall.edit', $hall) }}" class="btn btn-primary btn-sm">Edit</a> -->
                         <a href="{{route('hall.show', $hall)}}" class="btn btn-primary btn-sm">Show</a>
                         <form action="{{ route('hall.destroy', $hall)}}" method="POST" class="d-inline">
                             @csrf 

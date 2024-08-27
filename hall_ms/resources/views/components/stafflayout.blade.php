@@ -130,4 +130,5 @@ function closeNav() {
   document.getElementById("main").style.marginLeft = "0";
 }
     </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </html>

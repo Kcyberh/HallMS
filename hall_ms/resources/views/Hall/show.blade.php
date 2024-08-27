@@ -39,7 +39,7 @@
                                         <span class="status-indicator" data-status="{{ $room->status }}"></span></p>
                                         <h5 class="card-title">Room Price: {{ $room->price }}</h5>
                                         <p class="card-text">Gender: {{ $room->gender }}</p>
-                                        <p class="card-text">Type: {{ $room->type }}</p>
+                                        <p class="card-text">Type: {{ $room->type }} IN 1</p>
                                         <p><strong>Key Details:</strong></p>
                                         <ul class="list-group">
                                             @if(isset($keys[$room->id]) && count($keys[$room->id]) > 0)

@@ -1,5 +1,18 @@
 <x-adminlayout>
-  
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if (session('message'))
+    <script>
+        Swal.fire({
+            title: "Updated!",
+            text: "{{ session('message') }}",
+            icon: "success",
+            confirmButtonText: "OK"
+        });
+    </script>
+@endif
+
+
+    
   <div class="m-3">
     <form action="{{ route('hall.update', $hall)}}" method="POST" class="hall">
         @csrf

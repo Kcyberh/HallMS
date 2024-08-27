@@ -1,6 +1,26 @@
 <x-studentlayout>
-    
-   
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if (session('success'))
+        <script>
+            Swal.fire({
+                title: "Good job!",
+                text: "{{ session('success') }}",
+                icon: "success",
+                confirmButtonText: "OK"
+            });
+        </script>
+    @endif
+<!--already booked -->
+@if (session('errorss'))
+    <script>
+        Swal.fire({
+            title: "Error!",
+            text: "{{ session('error') }}",
+            icon: "error",
+            confirmButtonText: "OK"
+        });
+    </script>
+@endif
     <h1>Request Form</h1>
     
 
@@ -148,21 +168,7 @@
             <button type="submit" class="btn btn-primary ">Request</button>
         </div>
     </form>
-    @if(session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-         <strong>{{ session('success') }}</strong>
-         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>      
-        </div>
-    @endif
-<!--already booked -->
-    @if(session('errorss'))
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-         <strong>{{ session('errorss') }}</strong>
-         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>      
-        </div>
-    @endif
+   
 
   <!-- Add CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">

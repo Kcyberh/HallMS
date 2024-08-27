@@ -1,9 +1,16 @@
 <x-stafflayout>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <h1>Key Logs</h1>
 @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
+        <script>
+            Swal.fire({
+                title: "Good job!",
+                text: "{{ session('success') }}",
+                icon: "success",
+                confirmButtonText: "OK"
+            });
+        </script>
     @endif
 <div class="m-3">
     <form action="{{ route('key.store') }}" method="POST" class="hall">

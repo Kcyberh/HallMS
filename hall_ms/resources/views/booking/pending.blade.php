@@ -1,11 +1,15 @@
 <x-adminlayout>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @if (session('success'))
-    <div class="alert alert-success">
-       <strong> {{ session('success') }} </strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-               
-    </div>
-@endif
+        <script>
+            Swal.fire({
+                title: "Good job!",
+                text: "{{ session('success') }}",
+                icon: "success",
+                confirmButtonText: "OK"
+            });
+        </script>
+    @endif
 <h1>Pending Booking</h1>
 <div>
 <h4>List of Pending Bookings with payments made at the bank</h4>

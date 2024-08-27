@@ -1,4 +1,5 @@
 <x-studentlayout>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <h1>Payment</h1>
 <div class="row">
     @if ($errors->any())
@@ -12,6 +13,17 @@
         </ul>
     </div>
 @endif
+@if (session('error'))
+    <script>
+        Swal.fire({
+            title: "Error!",
+            text: "{{ session('error') }}",
+            icon: "error",
+            confirmButtonText: "OK"
+        });
+    </script>
+@endif
+
 <div class="row">
   <div class="col">
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">

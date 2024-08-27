@@ -51,12 +51,13 @@
         <div class="text-end">
     @if($booking->status === 'approved')
         <p><strong>Your payment has been sent and approved successfully. View your Room details below:</strong></p>
-        <a href="{{ route('booking.show', $booking->id) }}" class="btn btn-success">View Room</a>
+        <a href="{{ route('booking.show', $booking->id) }}" class="btn btn-success">View Room</a> 
     @else
         <p><strong>Kindly make payment within the next 72 hours to secure your booking</strong></p>
         <a href="{{ route('payment.index')}}" class="btn btn-primary">Make Payment</a>
     @endif
 </div>
+<!--  -->
         </div>
     @endif
                 </div>
@@ -70,6 +71,8 @@
                 <h2 class="text-center mb-4 fw-bold">Room Mate</h2>
 
 <div class="row">
+    
+@if ($relatedBookings->isNotEmpty())
     @foreach ($relatedBookings as $booking)
         <div class="col-md-6 col-lg-3 mb-4">
             <div class="card h-100 shadow-sm booking-card">
@@ -100,6 +103,9 @@
         </div>
     @endforeach
 </div>
+@else
+    <p>No Roommate found.</p>
+@endif
                 </div>
             </div>
         </div>
