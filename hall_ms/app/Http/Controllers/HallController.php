@@ -143,7 +143,7 @@ class HallController extends Controller
     {
         if (Auth::check()&& Auth::user()->usertype == 'admin'){
         $hall->delete();
-        return to_route('hall.index')->with('message','Hall details has been deleted ');
+        return to_route('hall.index')->with('errors','Hall details has been deleted ');
         }
         return redirect('/')->with('error','You do not have access to this page');
     }
