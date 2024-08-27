@@ -62,6 +62,7 @@ class DashboardController extends Controller
                 ->get();
 
                 // Fetch all bookings that have the same room number and hall ID
+                if ($bookings->isNotEmpty()) {
                 $room = $bookings->first()->room;
                 $roomNumber = $room->number;
                 $hallId = $room->hall_id;
@@ -70,6 +71,9 @@ class DashboardController extends Controller
                 $query->where('hall_id', $hallId)
                 ->where('number', $roomNumber);
                 })->get();
+            } else {
+                $relatedBookings = collect(); // Empty collection to avoid errors in the view
+            }
 
                 // Fetch the keys associated with the rooms in the related bookings
                 $keys = DB::table('key_room')
