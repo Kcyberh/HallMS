@@ -106,7 +106,7 @@ class RoomController extends Controller
             return redirect()->back()->withErrors(['type' => 'Room Number type 1 in 1 in this hall and block is full']);
         }
     }
-
+    for ($i = 1; $i <= $data['type']; $i++) {
         $room = Room::create($data);
          // Retrieve a key (use an appropriate method or criteria here)
          $key = Key::first(); // Fetch the first key, or use a specific criteria
@@ -123,6 +123,7 @@ class RoomController extends Controller
                 'status' => 'active', // or any other status you want to set
             ]);
         }
+    }
         return to_route('room.index', $room)->with('message', 'Room has been created');
     }
     return redirect('/')->with('error', 'You do not have access to this page.');
@@ -246,7 +247,7 @@ class RoomController extends Controller
     {
         if (Auth::check()&& Auth::user()->usertype == 'admin'){
         $room->delete();
-        return to_route('room.index')->with('message','Room details has been deleted ');
+        return to_route('room.index')->with('error','Room details has been deleted ');
         }
         return redirect('/')->with('error', 'You do not have access to this page.');
     }
