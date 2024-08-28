@@ -109,7 +109,7 @@ class RoomController extends Controller
     for ($i = 1; $i <= $data['type']; $i++) {
         $room = Room::create($data);
          // Retrieve a key (use an appropriate method or criteria here)
-         $key = Key::first(); // Fetch the first key, or use a specific criteria
+         $key = Key::where('hall_id', $data['hall_id'])->first(); // Fetch the first key, or use a specific criteria
 
         if ($key) {
             // Generate the key_number by combining key_id and room number

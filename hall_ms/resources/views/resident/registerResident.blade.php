@@ -25,6 +25,16 @@
     })
    </script>
 @endif
+@if (session('message'))
+    <script>
+        Swal.fire({
+            title: "Success!",
+            text: "{{ session('message') }}",
+            icon: "success",
+            confirmButtonText: "OK"
+        });
+    </script>
+@endif
  <!-- index number -->
  <div class="row g-3">
         <form action="{{ route('resident.search')}}" method="POST">

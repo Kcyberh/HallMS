@@ -1,4 +1,6 @@
-<x-guest-layout>
+<x-adminlayout>
+<x-guests>
+    
     <form method="POST" action="{{ route('registerUser.store') }}">
         @csrf
         <div class="row g-3">
@@ -164,4 +166,5 @@
                 
             });
         </script>
-</x-guest-layout>
+</x-guests>
+</x-adminlayout>

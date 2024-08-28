@@ -23,7 +23,7 @@
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
             <div>
                 <a href="/">
-                    <img src="/image/487798a20b996d4e4f2e547cbd42e697.png" alt="Logo" class="w-20">
+                    <img src="/icons/account_circle.png" alt="Logo" class="w-20">
                 </a>
             </div>
 

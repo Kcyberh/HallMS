@@ -125,7 +125,7 @@ class ResidentController extends Controller
         $resident->delete();
 
         // Redirect back with a success message
-        return redirect()->back()->with('success', 'Resident record deleted successfully.');
+        return redirect()->back()->with('errors', 'Resident record deleted successfully.');
     }
     Public function search(Request $request){
         $request->validate([

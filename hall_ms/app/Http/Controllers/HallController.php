@@ -71,6 +71,7 @@ class HallController extends Controller
          // Insert the key into the keys table
          Key::create([
              'key_code' => $keyCode,
+             'hall_id' => $hall->id,
              //'room_id' => null // Assuming you'll associate it with a room later
          ]);
         return to_route('hall.index', $hall)->with('message', 'Hall was created');

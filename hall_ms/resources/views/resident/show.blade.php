@@ -64,7 +64,7 @@
                     <p><strong>Booking Start Date:</strong> {{ $resident->booking->started_at }}</p>
                     <p><strong>Booking End Date:</strong> {{ $resident->booking->ending_at }}</p>
                     <p><strong>Payment Date:</strong> {{ $resident->payment->created_at }}</p>
-                    <p><strong>Room Type:</strong> {{ $resident->payment->status }}</p>
+                    <p><strong>Payment Status:</strong> {{ $resident->payment->status }}</p>
                 </div>
 
               

@@ -1,25 +1,35 @@
 <x-stafflayout>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-@if ($errors->has('error'))
-   <script>
-      Swal.fire({
-            title: "Error!",
-            text: "{{ $errors->first('error') }}",
-            icon: "warning",
+@if (session('error'))
+    <script>
+        Swal.fire({
+            title: "Deleted!",
+            text: "{{ session('error') }}",
+            icon: "error",
             confirmButtonText: "OK"
-    })
-   </script>
+        });
+    </script>
 @endif
-@if (session('success'))
+@if (session('errors'))
         <script>
             Swal.fire({
-                title: "Good job!",
+                title: "Deleted!",
                 text: "{{ session('success') }}",
-                icon: "success",
+                icon: "error",
                 confirmButtonText: "OK"
             });
         </script>
     @endif
+    @if (session('success'))
+    <script>
+        Swal.fire({
+            title: "Success!",
+            text: "{{ session('message') }}",
+            icon: "success",
+            confirmButtonText: "OK"
+        });
+    </script>
+@endif
 <div class="row">
   <div class="col-sm-6 mb-3 mb-sm-0" >
     <div class="card" >

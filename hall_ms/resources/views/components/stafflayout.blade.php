@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Staff</title>
-
+        <link rel="stylesheet" href="//cdn.datatables.net/2.1.3/css/dataTables.dataTables.min.css">
+      
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
@@ -102,12 +103,7 @@
 
 </div>
 <div id="main">
-  @session('message')
-  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>{{ session('message') }}</strong> 
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-  @endsession
+  
 {{$slot}}
 </div>
    
@@ -130,5 +126,15 @@ function closeNav() {
   document.getElementById("main").style.marginLeft = "0";
 }
     </script>
+    <script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/2.1.3/js/dataTables.min.js"></script>
+<script>
+    $(document).ready(function (){
+        $('#myTable').DataTable();
+    })
+</script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </html>

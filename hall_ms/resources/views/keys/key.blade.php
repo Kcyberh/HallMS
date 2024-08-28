@@ -18,7 +18,7 @@
     <p>No keys found.</p>
 @else
     <div class="table-responsive">
-        <table id="keyTable" class="table table-bordered table-hover">
+        <table id="myTable" class="table table-bordered table-hover">
             <thead class="table-dark">
                 <tr>
                     <th>Key Code</th>
@@ -36,7 +36,7 @@
                         <td>{{ $key->number }}</td>
                         <td>{{ $key->key_number }}</td>
                         <td>
-                            <span class="badge {{ $key->status == 'active' ? 'badge-success' : ($key->status == 'returned' ? 'badge-secondary' : 'badge-danger') }}">
+                            <span class="badge {{ $key->status == 'active' ? 'badge-success' : ($key->status == 'returned' ? 'badge-secondary' : 'badge-danger') }} text-dark">
                                 {{ ucfirst($key->status) }}
                             </span>
                         </td>

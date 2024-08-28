@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Key extends Model
 {
     use HasFactory;
-    protected $fillable = ['key_code'];
+    protected $fillable = ['key_code','hall_id'];
 
     public function rooms()
     {

@@ -40,7 +40,8 @@
                                         <h5 class="card-title">Room Price: {{ $room->price }}</h5>
                                         <p class="card-text">Gender: {{ $room->gender }}</p>
                                         <p class="card-text">Type: {{ $room->type }} IN 1</p>
-                                        <p><strong>Key Details:</strong></p>
+                                        <p><strong>Key Details:</strong>
+                                        
                                         <ul class="list-group">
                                             @if(isset($keys[$room->id]) && count($keys[$room->id]) > 0)
                                                 @foreach($keys[$room->id] as $key)
@@ -60,7 +61,7 @@
                                 @endforeach
                                 
                             </div>
-                            <a href="{{route('hall.members', $hall)}}" class="btn btn-primary">View</a>
+                           
                         </div>
                     </div>
                     
@@ -88,7 +89,7 @@
     margin-bottom: 10px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* overflow: scroll; */
+    overflow: scroll; 
     font-size: smaller;
 }
 .room-box:hover {
