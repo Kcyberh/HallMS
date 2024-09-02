@@ -143,17 +143,17 @@
               <!-- Starting at -->
         <div class="col mt-1" >
         <label for="starting" class="">Starting at</label>
-        <input name="started_at" id="starting" type="datetime-local"  class="form-control" placeholder="Starting Date" aria-label="Starting Date" >
+        <input name="started_at" id="starting" type="datetime-local"  class="form-control" placeholder="Starting Date" aria-label="Starting Date" hidden>
             <x-input-error :messages="$errors->get('started_at')" class="mt-2" />
         </div>
         <!-- Ending at -->
         <div class="col mt-1 mb-3" >
         <label for="ending" class="">Ending at</label>
-        <input name="ending_at" id="ending" type="datetime-local"  class="form-control" placeholder="Ending Date" aria-label="Ending Date" >
+        <input name="ending_at" id="ending" type="datetime-local"  class="form-control" placeholder="Ending Date" aria-label="Ending Date"  hidden>
             <x-input-error :messages="$errors->get('ending_at')" class="mt-2" />
         </div>
         </div>
-        <h6>Kindly note that the booking and allocation room last for 10months and payment must be made within 72 hours.</h6>
+        <h6 class="fw-bold">Kindly note that the booking and allocation room last for 10months and payment must be made within 72 hours.</h6>
      
         <!-- Status -->
         
