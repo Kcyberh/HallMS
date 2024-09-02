@@ -11,7 +11,8 @@ use App\Models\Payment;
 use App\Models\Resident;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\Key;
+use App\Models\Complains;
 class DashboardController extends Controller
 {
     public function show()
@@ -34,11 +35,13 @@ class DashboardController extends Controller
                 $admin = User::where('usertype','admin')->count();
                 $staff = User::where('usertype','staff')->count();
                 $resident = Resident::count();
+                $complaint = Complains::count();
                 return view('admin.index', compact('roomCount','capacity',
                 'hallCount','bookingCount','approved','pending','payment',
                 'student','admin','staff','user',
-                'available','booked','resident'));
+                'available','booked','resident','complaint'));
             case 'staff':
+                
                 $roomCount = Room::count();
                 $available = Room::where('status','available')->count();
                 $booked = Room::where('status','booked')->count();
