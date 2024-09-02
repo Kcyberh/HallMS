@@ -7,6 +7,7 @@
         <title>Hall Manager</title>
       <link rel="stylesheet" href="//cdn.datatables.net/2.1.3/css/dataTables.dataTables.min.css">
         <!-- Fonts -->
+         
        
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet">

@@ -8,6 +8,7 @@ use App\Models\Room;
 use App\Models\Hall;
 use App\Models\Booking;
 use App\Models\Payment;
+use App\Models\Resident;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
@@ -32,10 +33,11 @@ class DashboardController extends Controller
                 $student = User::where('usertype','student')->count();
                 $admin = User::where('usertype','admin')->count();
                 $staff = User::where('usertype','staff')->count();
+                $resident = Resident::count();
                 return view('admin.index', compact('roomCount','capacity',
                 'hallCount','bookingCount','approved','pending','payment',
                 'student','admin','staff','user',
-                'available','booked'));
+                'available','booked','resident'));
             case 'staff':
                 $roomCount = Room::count();
                 $available = Room::where('status','available')->count();
@@ -50,10 +52,11 @@ class DashboardController extends Controller
                 $student = User::where('usertype','student')->count();
                 $admin = User::where('usertype','admin')->count();
                 $staff = User::where('usertype','staff')->count();
+                $resident = Resident::count();
                 return view('staff.index', compact('roomCount','capacity',
                 'hallCount','bookingCount','approved','pending','payment',
                 'student','admin','staff','user',
-                'available','booked'));
+                'available','booked','resident',));
                 // return view();
             case 'student':
                 // Fetch the user's own bookings
