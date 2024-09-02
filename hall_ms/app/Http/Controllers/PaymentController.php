@@ -40,6 +40,7 @@ class PaymentController extends Controller
                 'image' => ['required', 'image'],
                 'user_id' => ['required', 'integer'],
                 'booking_id' => ['required', 'integer'],
+                'channel' => ['required','string']
                 
             ]);
              // Check if payment already exists
@@ -56,6 +57,7 @@ class PaymentController extends Controller
                 'amount' => $data['amount'],
                 'user_id' => $data['user_id'],
                 'booking_id' => $data['booking_id'],
+                'channel' => $data['channel'],
                 'image' => $imagePath,
             ]);
             return to_route('payment.index', $payment)->with('message', 'Payment Succesful');

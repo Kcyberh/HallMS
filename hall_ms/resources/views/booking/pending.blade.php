@@ -87,7 +87,7 @@
            <p> <strong>Starting Date:</strong> {{ $payment->booking->started_at }} <br></p>
            <p> <strong>Ending Date:</strong> {{ $payment->booking->ending_at }} <br></p>
            <p> <strong>Amount:</strong>  &#8373; {{ $payment->amount }} <br></p>
-           @if ($payment->channel === 'bank')
+           @if ($payment->channel === 'Bank')
             <img src="{{ asset('storage/' . $payment->image) }}" class="img-fluid m-1" alt="payment receipt">
             <a href="{{ asset('storage/' . $payment->image) }}" download="Payment_{{ $payment->id }}_{{ $payment->user->name }}.jpg" class="btn btn-success mt-2">Download Image</a>
             <a href="{{ asset('storage/' . $payment->image) }}" target="_blank" class="btn btn-primary mt-2">View Image</a>

@@ -2,16 +2,22 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <h1>Payment</h1>
 <div class="row">
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </li>
-            @endforeach
-        </ul>
-    </div>
+@if ($errors->any())
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                title: 'Validation Error',
+                html: `
+                <ul style="text-align: left;">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>`,
+                icon: 'error',
+                confirmButtonText: 'Okay'
+            });
+        });
+    </script>
 @endif
 @if (session('error'))
     <script>
@@ -19,6 +25,17 @@
             title: "Error!",
             text: "{{ session('error') }}",
             icon: "error",
+            confirmButtonText: "OK"
+        });
+    </script>
+@endif
+
+@if (session('message'))
+    <script>
+        Swal.fire({
+            title: "Success!",
+            text: "{{ session('message') }}",
+            icon: "success",
             confirmButtonText: "OK"
         });
     </script>
@@ -87,7 +104,7 @@
         </div>
         <div class="mt-0">
         <label for="" class="form-label">Channel</label>
-        <input class="form-control" type="text" value="Bank" aria-label="Disabled input example" disabled readonly>
+        <input class="form-control" type="text" name="channel" value="Bank" aria-label="Disabled input example"  readonly>
         </div>
 
     
@@ -167,46 +184,5 @@
 </div>
 </div>
 
-<!-- <h2>Product: Laptop</h2>
-<h3>Price: 15 </h3>
-<form id="paymentForm"> 
-  <div class="form-submit">
-  <button type="submit" onclick="payWithPaystack()" class="btn btn-primary">Pay with PayStack</button>
-  </div>
-</form> -->
 
-<!-- <script src="https://js.paystack.co/v2/inline.js"></script>
-<script>
-    const paymentForm = documnet.getElementId('paymentForm');
-    paymentForm.addEventListener("submit", payWithPaystack, false);
-    function payWithPaystack(e){
-      e.preventDefault();
-      let handler = PaystackPop.setup({
-        key: "{{ env('PAYSTACK_PUBLIC_KEY')}}",
-        email: "",
-        amount: 1500,
-        metadata: {
-          custom_fields: [{
-            display_name: "Laptop",
-            variable_name: "laptop",
-            value: "Laptop"
-          },
-          {
-            display_name: "Mobile",
-            variable_name: "mobile",
-            value: "mobile"
-          }
-        ]
-        }, 
-        onClose: function(){
-          alert('Window closed.');
-        },
-        callback: function(response){
-            window.location.href = "{{ route('callback') }}" + response.redirecturl;
-        }
-      });
-      handler.openIframe();
-    } 
-
-</script>-->
 </x-studentlayout>

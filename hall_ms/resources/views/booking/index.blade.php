@@ -142,13 +142,13 @@
         <div class="row g-3 mt-1">
               <!-- Starting at -->
         <div class="col mt-1" >
-        <label for="starting" class="">Starting at</label>
+        <label for="starting" class="" hidden>Starting at</label>
         <input name="started_at" id="starting" type="datetime-local"  class="form-control" placeholder="Starting Date" aria-label="Starting Date" hidden>
             <x-input-error :messages="$errors->get('started_at')" class="mt-2" />
         </div>
         <!-- Ending at -->
         <div class="col mt-1 mb-3" >
-        <label for="ending" class="">Ending at</label>
+        <label for="ending" class="" hidden>Ending at</label>
         <input name="ending_at" id="ending" type="datetime-local"  class="form-control" placeholder="Ending Date" aria-label="Ending Date"  hidden>
             <x-input-error :messages="$errors->get('ending_at')" class="mt-2" />
         </div>
