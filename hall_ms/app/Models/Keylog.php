@@ -19,4 +19,8 @@ class Keylog extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function room()
+{
+    return $this->belongsTo(Room::class, 'key_room_id');
+}
 }

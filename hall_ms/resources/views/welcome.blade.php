@@ -225,6 +225,8 @@
     </div>
 @endif
                     <main class="mt-6">
+<div>
+  <h2 class="fw-bold text-center">Welcome to the UEW Accommodation Application System</h2>
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos iure minus quo fuga quibusdam tempore, quidem inventore animi sit, aliquid ab quis laborum officiis ratione laudantium totam, dolor praesentium tenetur!
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos iure minus quo fuga qu
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos iure minus quo fuga quibusdam tempore, quidem inventore animi sit, aliquid ab quis laborum officiis ratione laudantium totam, dolor praesentium tenetur!
@@ -233,6 +235,7 @@
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos iure minus quo fuga qu
     
 </p>
+</div>
 <hr />
 <!-- Slideshow container -->
 <div class="slideshow-container">
@@ -291,7 +294,7 @@
             <div class="container mt-4">
             <img src="/image/uew 1.png" alt="Avatar" class="image" style="width:100%">
             <div class="middle">
-            <div class="text1">Gharty Hall</div>
+            <div class="text1">Ghartey Hall</div>
             </div>
             </div>
             </div>    

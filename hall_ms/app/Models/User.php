@@ -63,4 +63,8 @@ class User extends Authenticatable
 {
     return $this->hasMany(Complains::class, 'user_id');
 }
+public function keyLogs()
+{
+    return $this->hasMany(KeyLog::class);
+}
 }

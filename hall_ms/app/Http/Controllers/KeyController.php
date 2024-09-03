@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Keylog;
 use App\Models\Room;
 use App\Models\Hall;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class KeyController extends Controller
@@ -38,10 +39,10 @@ class KeyController extends Controller
         $hall = Hall::all();
         $rooms = Room::all();
 
-        
+        $keyLogs = KeyLog::with('user', 'room')->get();
        
     
-        return view('keys.keylog', compact('user','hall','rooms'));
+        return view('keys.keylog', compact('user','hall','rooms','keyLogs'));
     }
   
 
@@ -50,11 +51,34 @@ class KeyController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // Validate the incoming request data
-    
-// Redirect with a success message
-      
+        
+      // Validate the incoming request data
+    $request->validate([
+        'student_name' => 'required|string|max:255',
+        'room_id' => 'required|exists:rooms,id',
+        'action' => 'required|in:active,returned,lost',
+        'details' => 'nullable|string',
+    ]);
+
+    // Find the user by the student's name
+    $user = User::where('name', $request->input('student_name'))->first();
+
+    if (!$user) {
+        return redirect()->back()->withErrors(['student_name' => 'Student not found'])->withInput();
+    }
+
+    // Insert the data into the key logs table
+    $keyLog = new KeyLog([
+        'key_room_id' => $request->input('room_id'),
+        'user_id' => $user->id,
+        'action' => $request->input('action'),
+        'details' => $request->input('details'),
+    ]);
+
+    $keyLog->save();
+
+    // Redirect with a success message
+    return redirect()->route('key.create')->with('success', 'Key log action has been successfully recorded.');
 }
     
 

@@ -89,11 +89,16 @@ class DashboardController extends Controller
                 ->get()
                 ->groupBy('room_id');
 
+                 // Fetch the key status from the keylog table
+                
+
+
                 // Pass both sets of bookings and keys to the view
                 return view('students.index', [
                 'bookings' => $bookings,
                 'relatedBookings' => $relatedBookings,
                 'keys' => $keys,
+                
                 ]);
                 
             default:

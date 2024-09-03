@@ -21,4 +21,9 @@ class Room extends Model
     {
         return $this->belongsToMany(Key::class, 'key_room');
     }
+    public function keyLogs()
+{
+    return $this->hasMany(KeyLog::class);
+}
+    
 }
