@@ -227,7 +227,7 @@
                     <main class="mt-6">
 <div>
   <h2 class="fw-bold text-center">Welcome to the UEW Accommodation Application System</h2>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos iure minus quo fuga quibusdam tempore, quidem inventore animi sit, aliquid ab quis laborum officiis ratione laudantium totam, dolor praesentium tenetur!
+<p>Lorem ipsum dr sit amet consectetur adipisicing elit. Dignissimos iure minus quo fuga quibusdam tempore, quidem inventore animi sit, aliquid ab quis laborum officiis ratione laudantium totam, dolor praesentium tenetur!
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos iure minus quo fuga qu
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos iure minus quo fuga quibusdam tempore, quidem inventore animi sit, aliquid ab quis laborum officiis ratione laudantium totam, dolor praesentium tenetur!
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos iure minus quo fuga qu
