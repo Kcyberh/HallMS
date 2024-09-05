@@ -80,9 +80,9 @@
 <div class="border border-dark rounded p-2 shadow-sm">
     <h3 class="fw-bold text-center">Key Keeping</h3>
 </div>
-@if($keyLogs->isset())
-<div class="table-responsive mt-3">
-        <table id="myTable" class="table  table-striped">
+@if(isset($keyLogs) && $keyLogs->isNotEmpty())
+    <div class="table-responsive mt-3">
+        <table id="myTable" class="table table-striped">
             <thead class="table-dark">
                 <tr>
                     <th>#</th>
@@ -108,9 +108,10 @@
         </table>
     </div>
 @else
-<div class="text-center mt-3">
-    <p>No key logs found.</p>
-</div>
+    <div class="text-center mt-3">
+        <p>No key logs found.</p>
+    </div>
+@endif
 <script>
    document.getElementById('hallSelect').addEventListener('change', function() {
     let hallId = this.value;
