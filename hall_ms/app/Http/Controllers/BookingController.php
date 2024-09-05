@@ -93,8 +93,8 @@ class BookingController extends Controller
                 'telephone' => $validatedData['telephone'],
                 'age' => $validatedData['age']
             ]);
-// Dispatch the job to delete the booking if not approved within 60 seconds
-            DeleteUnapprovedBooking::dispatch($booking)->delay(now()->addSeconds(60));
+// Dispatch the job to delete the booking if not approved within 72hours
+            DeleteUnapprovedBooking::dispatch($booking)->delay(now()->addHours(72));
 
             // Update the room status
             $room = Room::find($validatedData['room_id']);
