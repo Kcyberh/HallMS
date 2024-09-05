@@ -172,7 +172,30 @@
   from {opacity: .4}
   to {opacity: 1}
 }
-</style>
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        p {
+            margin: 10px 0;
+        }
+        ul {
+            margin: 10px 0;
+        }
+        li {
+            margin: 5px 0;
+        }
+        .important {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
         <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
@@ -227,14 +250,31 @@
                     <main class="mt-6">
 <div>
   <h2 class="fw-bold text-center">Welcome to the UEW Accommodation Application System</h2>
-<p>Lorem ipsum dr sit amet consectetur adipisicing elit. Dignissimos iure minus quo fuga quibusdam tempore, quidem inventore animi sit, aliquid ab quis laborum officiis ratione laudantium totam, dolor praesentium tenetur!
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos iure minus quo fuga qu
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos iure minus quo fuga quibusdam tempore, quidem inventore animi sit, aliquid ab quis laborum officiis ratione laudantium totam, dolor praesentium tenetur!
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos iure minus quo fuga qu
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos iure minus quo fuga quibusdam tempore, quidem inventore animi sit, aliquid ab quis laborum officiis ratione laudantium totam, dolor praesentium tenetur!
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos iure minus quo fuga qu
+  <h2>To Book, Kindly Login</h2>
+    <p><strong>PROCEDURE FOR APPLICATION FOR ACCOMMODATION</strong></p>
     
-</p>
+    <p><strong>Freshers must:</strong></p>
+    <ul>
+        <li>Accept the offer of admission to proceed.</li>
+        <li>Pay academic fees in full before applying for accommodation.</li>
+    </ul>
+
+    <p class="important">Please note: Do not pay academic and residential fees together. Make a reservation for accommodation before payment of residential fees.</p>
+
+    <p><strong>Follow the steps below to make a reservation and select a room:</strong></p>
+    <ol>
+        <li>Login with your Student Email and Index Number (202104861@st.edu.gh and 202104861).</li>
+        <li>Select the "Make a Booking" button to view available accommodation.</li>
+        <li>Select a Room type and Block .</li>
+        <li>Read and accept the accommodation instructions.</li>
+        <li>Make Payment using the System that is Bank Card or Mobile Money </li>
+        <li>Or</li>
+        <li>Logout of the system and proceed to a paypoint to pay residential fees</li>
+        <li>After payment of residential fees, login to the system to check if Booking has been Approved</li>
+    </ol>
+    <p class="important">Please note: Approval of Booking is Based on First Come First Serve.</p>
+
+
 </div>
 <hr />
 <!-- Slideshow container -->
@@ -318,26 +358,84 @@
             
              <!--Room Available-->
    <div class="container p-5">
-    <h1>Rooms Available</h1>
+    <h1 class="fw-bold text-center">Residential Facility User Fees (RFUF) For 2024/2025 Academic Year</h1>
     <hr />
     <div class="table-responsive">
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th>One-in-One</th>
-                    <th>Two-in-One</th>
-                    <th>Three-in-One</th>
-                    <th>Four-in-One</th>
+                <th>Hall </th>
+                
+                    <th>GUSSS Hall 1</th>
+                    <th>GUSSS Hall 3</th>
+                    <th>Ghartey Hall</th>
+                    <th>K. Aggrey</th>
+                    <th>Simpa Hall</th>
+                    <th>University Hall</th>
+                </tr>
+                <tr>
+                <th>Occupancy</th>
+                
+                    <th>0208208053</th>
+                    <th>0544740895</th>
+                    <th>0247255925</th>
+                    <th>0534959688</th>
+                    <th>0202041051</th>
+                    <th>0209338798</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>2,500</td>
-                    <td>2,000</td>
-                    <td>1,500</td>
-                    <td>1,000</td>
+                    <th>4-6 Students-in-a-Room</th>
+                    <td> - </td>
+                    <td> - </td>
+                    <td>2,870.00</td>
+                    <td>2,870.00</td>
+                    <td>2,870.00</td>
+                    <td>2,870.00</td>
                 </tr>
                 <tr>
+                <th>3 Students-in-a-Room</th>
+                    <td>4,700.00</td>
+                    <td>4,700.00</td>
+                    <td>3,290.00</td>
+                    <td>3,290.00</td>
+                    <td>3,290.00</td>
+                    <td>3,290.00</td>
+                   
+                    
+                </tr>
+                <tr>
+                <th>2 Students-in-a-Room</th>
+                    <td>7,000.00</td>
+                    <td>7,000.00</td>
+                    <td>3,850.00</td>
+                    <td>3,850.00</td>
+                    <td>3,850.00</td>
+                    <td>3,850.00</td>
+                   
+                    
+                </tr>
+                <tr>
+                <th>1 Student-in-a-Room</th>
+                    <td>14,000.00</td>
+                    <td>14,000.00</td>
+                    <td>4,480.00</td>
+                    <td>4,480.00</td>
+                    <td>4,480.00</td>
+                    <td>4,480.00</td>
+                   
+                    
+                </tr>
+                <tr>
+                <th>International Students (2-Students-in-a-Room)</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                    <td>USD 2,000.00</td>
+                    
                    
                     
                 </tr>
